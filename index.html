@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪我予防・体幹トレーニング専門指導 | 学生アスリート向け</title>
+    <style>
+        /* --- 基本リセット ＆ 共通設定 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+
+        :root {
+            --primary-color: #0d3b66; /* 信頼感のあるネイビー */
+            --secondary-color: #f4d35e; /* アクティブなゴールド/イエロー */
+            --text-dark: #333333;
+            --bg-light: #f8f9fa;
+            --accent-red: #ee964b; /* オレンジ */
+            --instagram-color: #e1306c; /* インスタブランドカラー */
+            --line-color: #06c755; /* LINEブランドカラー */
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .logo span {
+            font-size: 0.8rem;
+            display: block;
+            color: #666;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- メインビジュアル (ヒーローセクション) --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(13, 59, 102, 0.95) 0%, rgba(26, 82, 118, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- セクション共通 --- */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-bg {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* --- お悩みセクション --- */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .problem-card {
+            background: #fff;
+            padding: 30px;
+            border-left: 5px solid var(--accent-red);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #d9534f;
+        }
+
+        /* --- 強み（特徴）セクション --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f5;
+        }
+
+        .feature-num {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            line-height: 1;
+            margin-bottom: 15px;
+            -webkit-text-stroke: 1px var(--primary-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- 指導の流れ --- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom: 4px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+
+        .tab-content {
+            display: none;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: bold;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        /* --- 料金体系セクション --- */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: #fff;
+            border: 2px solid #eef2f5;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: var(--primary-color);
+        }
+
+        .price-card.featured .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: #fff;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .price-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: #666;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* LINEオープンチャットボタン */
+        .line-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--line-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: opacity 0.3s, transform 0.2s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .line-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .line-btn span {
+            margin-right: 8px;
+            font-size: 1.3rem;
+        }
+
+        /* --- プロフィールセクション --- */
+        .profile-box {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .profile-img-placeholder {
+            width: 220px;
+            height: 220px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden; /* 画像を丸く綺麗に切り抜く */
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 比率を保って丸枠にジャストフィットさせる */
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .profile-title-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .profile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .profile-table th, .profile-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .profile-table th {
+            width: 100px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .history-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .history-list li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+        }
+
+        .history-list li::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* インスタリンクボタン */
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--instagram-color);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+            margin-top: 10px;
+        }
+
+        .instagram-btn:hover {
+            opacity: 0.85;
+        }
+
+        .instagram-btn span {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* --- お問い合わせフォーム --- */
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1a5276;
+        }
+
+        /* --- フッター --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- レスポンシブ調整 --- */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            nav {
+                display: none; 
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .tab-btn {
+                padding: 10px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+            .tab-btn.active {
+                border-bottom: 2px solid var(--primary-color);
+            }
+            .profile-box {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+            .form-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner container">
+            <div class="logo">
+                <span>学生アスリート専門指導</span>
+                怪我予防・体幹トレーニング
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#problems">こんなお悩み</a></li>
+                    <li><a href="#features">当塾の強み</a></li>
+                    <li><a href="#flow">指導内容</a></li>
+                    <li><a href="#price">料金体系</a></li>
+                    <li><a href="#profile">プロフィール</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <p class="hero-sub">〜学生アスリートのための、怪我予防・体幹トレーニング専門指導〜</p>
+            <h1 class="hero-title">
+                怪我に負けない強い体と、<br>
+                競技力を引き出すブレない軸を作る。
+            </h1>
+            <a href="#contact" class="cta-btn">無料体験・ご相談はこちら</a>
+        </div>
+    </section>
+
+    <section id="problems" class="container">
+        <h2 class="section-title">こんなお悩みはありませんか？</h2>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <h3>【保護者様】何度も同じ怪我を繰り返している</h3>
+                <p>練習を休むと遅れをとる不安と、痛みの間で子どもが苦しんでいる。根本的な身体の使い方に問題があるのでは…</p>
+            </div>
+            <div class="problem-card">
+                <h3>【選手本人】体幹がブレて、競り合いや本番に弱い</h3>
+                <p>後半になるとフォームが崩れる。当たり負けする。もっと自分のポテンシャルを100%発揮できる軸がほしい。</p>
+            </div>
+            <div class="problem-card">
+                <h3>【顧問・指導者様】チーム全体の怪我を減らしたい</h3>
+                <p>技術指導の時間はあっても、最新の解奉学や正しい補強運動・怪我予防プログラムを体系的に教える時間やノウハウが足りない。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">当指導の3つの強み</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-num">01</div>
+                    <h3>完全「競技特化型」の<br>身体操作アプローチ</h3>
+                    <p>野球、サッカー、陸上など、競技ごとに求められる関節の可動域や連動性は全く異なります。一律の体幹トレーニングではなく、実際のプレーに直結するブレない軸を作ります。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-num">02</div>
+                    <h3>専門資格を持つトレーナーによる<br>確かな怪我予防医学</h3>
+                    <p>根性論の補強運動は終わりです。スポーツ医学に基づき、成長期特有の骨や筋肉の発達に合わせた安全かつ最大効果を出すプログラムを提供します。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-num">03</div>
+                    <h3>指導者・保護者との<br>密な三位一体の連携</h3>
+                    <p>選手本人だけでなく、家庭でのケア方法、部活動の練習量に合わせた強度調整など、周囲のサポート環境とも連携して選手を守り、育てます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flow" class="container">
+        <h2 class="section-title">指導プログラム</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'personal')">個人指導（パーソナル）</button>
+            <button class="tab-btn" onclick="openTab(event, 'team')">部活動・チーム指導</button>
+        </div>
+
+        <div id="personal" class="tab-content active">
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <h4>パーソナル動作分析（スクリーニング）</h4>
+                    <p>現在の柔軟性、筋力バランス、関節の動きの「癖」を徹底チェックし、怪我のリスクを可視化します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <h4>オーダーメイド体幹プログラムの処方</h4>
+                    <p>苦手な動きを克服し、競技パフォーマンス（ブレない軸）を作るための個別メニューを組みます。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <h4>セルフケア・自宅自主トレ指導</h4>
+                    <p>LINE等での動画フィードバックを含め、毎日の正しいコンディショニング習慣を定着させます。</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="team" class="tab-content">
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <h4>チーム全体の課題ヒアリング</h4>
+                    <p>顧問の先生や監督から、チームの戦術、現在の負傷者の傾向、目指す大会などの目標を伺います。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <h4>ウォーミングアップ・補強の最適化導入</h4>
+                    <p>日々の練習に組み込める「怪我をしないための15分サーキット」などを全体に指導。全体の底上げを図ります。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <h4>定期巡回・フィードバック</h4>
+                    <p>定期的に練習場へ赴き、フォームの崩れのチェックや、期分け（シーズン期・オフ期）に応じたメニュー更新を行います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="price" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">料金体系</h2>
+            <div class="price-grid">
+                <div class="price-card featured">
+                    <div class="badge">おすすめ</div>
+                    <div class="price-title">パーソナル指導</div>
+                    <div class="price-amount">5,000円 <span>/ 1回</span></div>
+                    <p class="price-note">※別途、施設利用に伴う場所代を頂戴いたします。</p>
+                </div>
+                <div class="price-card">
+                    <div class="price-title">集団指導</div>
+                    <div class="price-amount">3,000円 <span>/ 1回</span></div>
+                    <p class="price-note">※不定期開催となります。<br>最新の開催情報は公式LINEオープンチャットにて随時配信しております。</p>
+                    
+                    <a href="https://line.me/ti/g2/QNfjaXIX2P4-KiYZ6JwFGLmfYNHDwykBBw_Pjg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="line-btn">
+                        <span>💬</span> LINEオープンチャットで情報を得る
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile" class="container">
+        <h2 class="section-title">指導者プロフィール</h2>
+        <div class="profile-box">
+            <div class="profile-img-placeholder">
+                <img src="5F148C99-2B7A-43E5-98B0-903B2759F870_1_201_a.jpg" alt="船越 空芽" class="profile-img">
+            </div>
+            <div class="profile-info">
+                <h3>船越 空芽 <span style="font-size: 1.1rem; color: #555;">（ふなこし くうが）</span></h3>
+                <div class="profile-title-tag">アスレティックトレーナー</div>
+                
+                <table class="profile-table">
+                    <tr>
+                        <th>出身</th>
+                        <td>埼玉県さいたま市</td>
+                    </tr>
+                    <tr>
+                        <th>経歴</th>
+                        <td>
+                            法政大学 スポーツ健康学部 卒業<br>
+                            船橋整形外科 勤務
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>指導実績</th>
+                        <td>
+                            <ul class="history-list">
+                                <li>埼玉県立南稜高校 野球部</li>
+                                <li>東京神宮リトルシニア</li>
+                                <li>東京実業高校 硬式野球部</li>
+                                <li>拓殖大学 アメリカンフットボール部</li>
+                                <li>浦和学院高校 サッカー部</li>
+                                <li>法政大学 ハンドボール部（過去）</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>競技歴</th>
+                        <td>野球 10年間（プレイヤー目線に立った親身な指導が強みです）</td>
+                    </tr>
+                </table>
+
+                <a href="https://www.instagram.com/funa.tr_89" target="_blank" class="instagram-btn">
+                    <span>📷</span> Instagramをフォロー：@funa.tr_89
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-bg">
+        <div class="container">
+            <h2 class="section-title">無料体験・お問い合わせ</h2>
+            <div class="form-box">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="identity">あなたについて</label>
+                        <select id="identity" required>
+                            <option value="">選択してください</option>
+                            <option value="parent">保護者様</option>
+                            <option value="athlete">学生アスリート本人</option>
+                            <option value="coach">部活動顧問・指導者様</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">お名前（ふりがな）</label>
+                        <input type="text" id="name" placeholder="山田 太郎" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sport">実施している競技</label>
+                        <input type="text" id="sport" placeholder="例：野球、サッカー、バスケットボールなど" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ご相談内容・お悩みの怪我など</label>
+                        <textarea id="message" placeholder="現在抱えているお悩みや、体験希望の日程などをご記入ください。"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-top: 25px; margin-bottom: 25px; background: #eef9f2; padding: 15px; border-radius: 4px; border: 1px solid var(--line-color);">
+                        <p style="font-size: 0.9rem; color: #222; font-weight: bold; margin-bottom: 5px;">💡 不定期開催の集団指導をご希望の方へ</p>
+                        <p style="font-size: 0.85rem; color: #555; line-height: 1.4;">最新情報はLINEオープンチャットでも配信中！フォーム送信なしで直接オープンチャットへのご参加のみも大歓迎です。</p>
+                    </div>
+                    <button type="submit" class="submit-btn">送信する（無料相談・体験申込み）</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 怪我予防・体幹トレーニング専門指導. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('お問い合わせありがとうございます。内容を確認し、2営業日以内にご返信いたします。');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>
